@@ -1,0 +1,32 @@
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode firstLL=l1, secondLL=l2;
+        ListNode resultLL=new ListNode();
+        ListNode mover=resultLL;
+        int c=0;
+        while(firstLL != null && secondLL != null){
+            int presentSum = firstLL.val+secondLL.val + c;
+            mover.next = new ListNode( presentSum % 10 ,null);
+            c = presentSum/10;            
+            mover = mover.next;            
+            firstLL = firstLL.next;
+            secondLL = secondLL.next;
+        }
+        while(firstLL!=null){
+            mover.next=new ListNode((firstLL.val+c)%10,null);
+            c=(firstLL.val+c)/10;            
+            mover=mover.next;
+            firstLL=firstLL.next;
+        }
+         while(secondLL!=null){
+            mover.next=new ListNode((secondLL.val+c)%10,null);
+            c=(secondLL.val+c)/10;            
+            mover=mover.next;
+            secondLL=secondLL.next;
+        }
+        if(c>0){
+            mover.next=new ListNode(c,null);
+            mover=mover.next;
+        }
+        return resultLL.next;
+
+    }
