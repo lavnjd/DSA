@@ -1,0 +1,21 @@
+ public ListNode oddEvenList(ListNode head) {
+        ListNode temp=head;
+        ListNode odd=new ListNode();
+        ListNode even = new ListNode();
+        ListNode evenLL=even,oddLL=odd;
+        while(temp!=null && temp.next!=null){
+            oddLL.next=new ListNode(temp.val,null);
+            evenLL.next=new ListNode(temp.next.val,null);
+            oddLL=oddLL.next;
+            evenLL=evenLL.next;
+            temp=temp.next.next;
+        }
+        if(temp!=null)
+        {
+            oddLL.next=temp;
+            oddLL=oddLL.next;
+        }
+        oddLL.next=even.next;
+
+        return odd.next;
+    }
