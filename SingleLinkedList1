@@ -1,0 +1,94 @@
+import java.util.*;
+
+class Node{
+    int data;
+    Node next;
+    Node(){
+
+    }
+    Node(int data1,Node next1){
+       this.data=data1;
+       this.next=next1;
+    }
+}
+public class LearnLinkedList{
+   public static void main(String args[]){
+      int[] a={1,2,3,4,6,7};
+      Node head = new Node(a[0],null);
+      Node mover=head;
+      for(int i=1;i<a.length;i++){
+        Node temp=new Node(a[i],null);
+        mover.next=temp;
+        mover=temp;
+
+      }
+      int c=0;
+      Node temp=head;
+      while(temp!=null){
+        c++;
+        if(temp.data==6){
+            System.out.println("Found at"+c+"th position");
+        }
+        System.out.println(temp.data);
+        temp=temp.next;
+      }
+      System.out.println("length"+c);
+
+      System.out.println("starting delete");
+      head=head.next;
+      Node temp4=head;
+      while(temp4!=null){
+         System.out.println(temp4.data);
+         temp4=temp4.next;
+      }
+      Node temp5=head;
+      Node temper=null;
+      while(temp5.next!=null){
+         temper=temp5;
+         temp5=temp5.next;
+      }
+      temper.next=null;
+      Node tempDeleteLast=head;
+      System.out.println("delete last");
+      while(tempDeleteLast!=null){
+         System.out.println(tempDeleteLast.data);
+         tempDeleteLast=tempDeleteLast.next;
+      }
+      Node temp6=head;
+      int count=0;
+      int position=3;
+      while(temp6!=null){
+         count++;
+         if(count==position-1){
+            temp6.next=temp6.next.next;
+         }
+         temp6=temp6.next;
+      }
+      
+      System.out.println("Delte position 2");
+      Node t =head;
+      while(t!=null){
+         System.out.println(t.data);
+         t=t.next;
+      }
+
+      Node deleteEle =head;
+      Node prev=head;
+      int value=2;
+      while(deleteEle!=null){
+         if(deleteEle.data==value){
+            prev.next=prev.next.next;
+         }
+         prev=deleteEle;
+         deleteEle=deleteEle.next;
+      }
+
+      Node print=head;
+      while(print!=null){
+         System.out.println(print.data);
+         print=print.next;
+      }
+
+
+   }
+}
