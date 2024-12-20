@@ -1,0 +1,72 @@
+class DLL{
+    int val;
+    DLL pre;
+    DLL next;
+    DLL(DLL pre,int val,DLL next){
+        this.val=val;
+        this.pre=pre;
+        this.next=next;
+    }
+}
+class DllLearning{
+    public static void main(String args[]){
+        int[] a={1,2,3,4,5,6,7};
+        DLL head=new DLL(null,a[0],null);
+        DLL mover=head;
+        for(int i=1;i<7;i++){
+            mover.next=new DLL(mover,a[i],null);
+            mover=mover.next;
+        }
+       
+
+        head=head.next;
+        head.pre=null;
+
+        DLL deleteTail = head;
+        while(deleteTail.next.next!=null){
+            deleteTail=deleteTail.next;
+        }
+         deleteTail.next.pre=null;
+            deleteTail.next=null;
+        
+        DLL deleteAtPos = head;
+        int c=0,pos=3;
+        while(deleteAtPos!=null){
+            c++;
+            if(c==pos){
+                DLL prev=deleteAtPos.pre;
+                prev.next=deleteAtPos.next;
+                deleteAtPos.pre=null;
+                deleteAtPos.next.pre=prev;
+                break;
+            }
+            deleteAtPos=deleteAtPos.next;
+        }
+        DLL deleteANode=head;
+        while(deleteANode!=null){
+            if(deleteANode.val==5){
+                DLL prev=deleteANode.pre;
+                prev.next=deleteANode.next;
+                deleteANode.pre=null;
+                deleteANode.next.pre=prev;
+                break;
+            }
+            deleteANode=deleteANode.next;
+        }
+        DLL insertBeforeHead = new DLL(null,19,head);
+        head.pre=insertBeforeHead;
+        head=insertBeforeHead;
+
+        DLL curr=head;
+        while(curr.next!=null){
+          curr=curr.next;
+        }
+        curr.pre.next=new DLL(curr.pre,109,curr);
+
+        DLL help=head;
+        while(help!=null){
+            System.out.println(help.val);
+            help=help.next;
+        }
+    }
+}
