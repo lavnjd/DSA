@@ -26,3 +26,27 @@ public ListNode removeNthFromEnd(ListNode head, int n) {
         return head;
         
     }
+
+//optimal using slow and fast pointer 
+public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode fast = head;
+        if(head == null || head.next== null){
+            head = null;
+            return head;
+        }
+        for(int i = 0 ; i < n; i++)
+        {
+            fast=fast.next;
+        }
+        if(fast==null){
+            head=head.next;
+            return head;
+        }
+        ListNode slow = head;
+        while(fast.next!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        slow.next=(slow.next!=null)? slow.next.next : null;
+        return head;
+    }
