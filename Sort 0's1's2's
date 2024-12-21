@@ -1,0 +1,36 @@
+static Node segregate(Node head) {
+        // add your code here
+        int count0=0,count1=0,count2=0;
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==0){
+                count0++;
+            }else if(temp.data==1){
+                count1++;
+            }else{
+                count2++;
+            }
+            temp=temp.next;
+        }
+        Node ansLL=new Node(1);
+        Node mover=ansLL;
+        int i=0;
+        while(i<count0){
+            mover.next=new Node(0);
+            mover=mover.next;
+            i++;
+        }
+        i=0;
+        while(i<count1){
+            mover.next=new Node(1);
+            mover=mover.next;
+            i++;
+        }
+        i=0;
+        while(i<count2){
+            mover.next=new Node(2);
+            mover=mover.next;
+            i++;
+        }
+        return ansLL.next;
+    }
