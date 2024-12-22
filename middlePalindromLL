@@ -1,0 +1,46 @@
+ public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+        
+    }
+
+///Palindrome
+
+ public boolean isPalindrome(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode start = head;
+
+        ListNode reverse1 = slow;
+        ListNode pre = null;
+        while(reverse1 !=null){
+            ListNode a= reverse1.next;
+            reverse1.next = pre;
+            pre = reverse1;
+            reverse1 = a;
+        }
+
+         ListNode reverse = pre;
+        while(start != null && reverse != null){
+            if(reverse.val != start.val){
+                return false;
+            }
+           reverse = reverse.next;
+           start = start.next;
+        }
+
+
+        
+        
+        return true;
+        
+    }
