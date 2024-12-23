@@ -1,0 +1,24 @@
+public int countNodesinLoop(Node head) {
+        // Add your code here.
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                return lengthOf(slow,fast.next);
+            }
+        }
+        return 0;
+
+    }
+    public int lengthOf(Node slow, Node fast){
+        Node s = slow;
+        Node f = fast;
+        int c = 1;
+        while(s != f){
+            c++;
+            f = f.next;
+        }
+        return c;
+    }
