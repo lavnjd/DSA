@@ -1,0 +1,21 @@
+public ListNode deleteDuplicates(ListNode head) {
+        ListNode curr = new ListNode(0);
+        ListNode ans = curr;
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode second = head.next;
+        int pre = -1000;
+        while(head!=null){
+            if((head.next!=null) && head.val == head.next.val || pre == head.val){
+                pre = head.val;
+            }else {
+                ans.next = new ListNode(head.val);
+                ans = ans.next;
+            }
+            head = head.next;
+        }
+        return curr.next;
+
+      
+    }
