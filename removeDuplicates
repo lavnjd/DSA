@@ -1,0 +1,20 @@
+Node removeDuplicates(Node head){
+        // Code Here.
+        Node result = new Node(-1);
+        Node ans = result;
+        Node temp = head, temp1 =head.next;
+        while(temp1 != null){
+            if(temp.data != temp1.data){
+                temp.next =temp1;
+                temp1.prev=temp;
+                temp = temp.next;
+            }
+            temp1 = temp1.next;
+        }
+        if(temp.next!=null){
+            temp.next = null;
+        }
+       
+        return head;
+        
+    }
