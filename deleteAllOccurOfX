@@ -1,0 +1,29 @@
+static Node toTail(Node a){
+        Node b=a;
+        while(b.next!=null){
+            b=b.next;
+        }
+        return b;
+    }
+    static Node deleteAllOccurOfX(Node head, int x) {
+        // Write your code here
+       
+        Node temp = head;
+        Node tail = toTail(head);
+        
+        while(temp!=null){
+            if(temp.data == x){
+                if(temp == head){
+                    head = temp.next;
+                }else if(temp.next!=null && temp.prev!=null) {
+                    temp.next.prev = temp.prev;
+                    temp.prev.next = temp.next;
+                }else if(temp == tail){
+                    temp.prev.next = null;
+                }
+            }
+            temp = temp.next;
+        }
+       
+        return head;
+    }
