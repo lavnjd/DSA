@@ -1,0 +1,27 @@
+public void reorderList(ListNode head) {
+       ListNode slow = head;
+       ListNode fast = head;
+       while(fast != null && fast.next != null){
+          slow = slow.next;
+          fast = fast.next.next;
+       }        
+       ListNode reverse = slow.next;
+       slow.next =  null;
+       ListNode pre = null;
+       while(reverse != null){
+        ListNode front = reverse.next;
+        reverse.next = pre;
+        pre = reverse;
+        reverse = front;
+       }
+       
+       ListNode first = head;
+       reverse = pre;
+       while(reverse!=null){
+        ListNode a= first.next,b= reverse.next;
+        first.next = reverse;
+        reverse.next = a;
+        first = a;
+        reverse = b;
+       }
+    }
