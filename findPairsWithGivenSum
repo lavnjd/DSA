@@ -1,0 +1,28 @@
+public static Node findTail(Node node){
+       Node temp = node;
+       while(temp.next!=null){
+        temp=temp.next;
+       }
+       return temp;
+    }    
+    public static ArrayList<ArrayList<Integer>> findPairsWithGivenSum(int target, Node head) {
+        // code here
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
+        Node start = head;
+        Node end = findTail(head);
+        while(start.data<end.data){
+            if(start.data+end.data == target){
+                ArrayList<Integer> a = new ArrayList<Integer>();
+                a.add(start.data);
+                a.add(end.data);
+                ans.add(a);
+                start = start.next;
+                end = end.prev;
+            }else if(start.data+end.data<target){
+                start = start.next;
+            }else{
+                end = end.prev;
+            }
+        }
+        return ans;
+    }
