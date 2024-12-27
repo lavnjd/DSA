@@ -1,0 +1,24 @@
+ public static ListNode sortList(ListNode curr,ListNode ans){
+        if(ans.val>=curr.val){
+            curr.next = ans;
+        }else{
+            ListNode temp = ans;
+            while(temp.next!=null && temp.next.val<curr.val){
+                temp = temp.next;
+            }
+            curr.next = temp.next;
+            temp.next = curr;
+        }
+        return ans;
+    }
+    public ListNode insertionSortList(ListNode head) {
+        ListNode ans = new ListNode(-10000);
+        ListNode curr = head;
+        while(curr!=null){
+            ListNode store = curr.next;
+            ans = sortList(curr,ans);
+            curr = store;
+        }
+        return ans.next;
+        
+    }
