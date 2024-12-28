@@ -1,0 +1,22 @@
+ public long pickGifts(int[] gifts, int k) {
+        for(int i=0;i<k;i++){
+            int j =0;
+            int maxi =-1;
+            int index =-1;
+            while(j<gifts.length){
+                if(gifts[j]>=maxi){
+                    maxi=gifts[j];
+                    index = j;
+                }
+                j++;
+            }
+            gifts[index]= (int) Math.sqrt(gifts[index]);
+            
+        }
+        long sum =0;
+        for(int i:gifts){
+            sum+=i;
+        }
+        return sum;
+        
+    }
