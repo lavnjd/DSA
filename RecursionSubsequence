@@ -1,0 +1,22 @@
+import java.util.*;
+class RecursionSubseuence{
+    public static void fun(int ind,int[] arr,List<Integer> ans){
+        if(ind==arr.length){
+            for(Integer i : ans){
+                System.out.print(i);
+            }
+            System.out.println("");
+            return;
+        }
+        ans.add(arr[ind]);
+        fun(ind+1,arr,ans);
+        ans.remove(ans.size()-1);
+        fun(ind+1,arr,ans);
+    }
+    public static void main(String[] args){
+        int[] arr = {3,1,2};
+        List<Integer> ans = new ArrayList<>();
+        int ind = 0;
+        fun(ind,arr,ans);
+    }
+}
